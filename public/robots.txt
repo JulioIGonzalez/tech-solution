@@ -1,0 +1,16 @@
+# Robots.txt para TechSolutions Iguazú
+# https://techsolutionsiguazu.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://techsolutionsiguazu.com/sitemap.xml
+
+# Bloquear recursos innecesarios
+Disallow: /api/
+Disallow: /_*
+Disallow: /admin/
+
+# Crawl-delay para ser amigable con los servidores
+Crawl-delay: 1
