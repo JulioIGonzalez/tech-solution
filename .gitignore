@@ -1,4 +1,43 @@
+# Dependencies
 node_modules
+
+# Build output
 dist
-*.local
+
+# TypeScript build artifacts (generated from vite.config.ts and tsconfig)
+vite.config.js
+vite.config.d.ts
+*.tsbuildinfo
+
+# Environment (secretos / variables locales)
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Cache
+.cache
+.parcel-cache
+.vite
+
+# Test / coverage
+coverage
+*.lcov
+
+# IDE / editor
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# OS
 .DS_Store
+Thumbs.db
+*.local
