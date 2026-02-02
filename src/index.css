@@ -18,9 +18,13 @@
     font-family: 'Inter', system-ui, sans-serif;
   }
 
-  /* Modo claro */
+  /* Modo claro: body y main */
   .light body {
     @apply bg-white text-dark-800;
+  }
+
+  .light main {
+    @apply bg-white;
   }
 
   /* Scroll margin para compensar header fijo */
@@ -38,7 +42,7 @@
     @apply outline-none ring-2 ring-cyber-500 ring-offset-2 ring-offset-dark-950;
   }
 
-  .light :focus-visible {
+  html.light :focus-visible {
     @apply ring-offset-white;
   }
 
@@ -53,7 +57,7 @@
     @apply bg-dark-800 text-dark-100 hover:bg-dark-700;
   }
 
-  .light .leaflet-tile-pane {
+  html.light .leaflet-tile-pane {
     filter: none;
   }
 }
@@ -100,13 +104,17 @@
     @apply rounded-2xl border border-dark-700/50 bg-dark-900/50 backdrop-blur-sm;
   }
 
-  .light .card-glass {
+  html.light .card-glass {
     @apply border-dark-200 bg-white/80;
   }
 
   /* Texto gradient */
   .text-gradient-cyber {
     @apply bg-gradient-to-r from-cyber-400 via-cyber-300 to-accent-400 bg-clip-text text-transparent;
+  }
+
+  html.light .text-gradient-cyber {
+    @apply from-cyber-600 via-cyber-500 to-accent-600;
   }
 }
 
@@ -165,11 +173,11 @@
   @apply bg-cyber-600;
 }
 
-.light ::-webkit-scrollbar-track {
+html.light ::-webkit-scrollbar-track {
   @apply bg-dark-100;
 }
 
-.light ::-webkit-scrollbar-thumb {
+html.light ::-webkit-scrollbar-thumb {
   @apply bg-dark-300;
 }
 
@@ -184,9 +192,278 @@
     radial-gradient(ellipse at 50% 100%, rgba(6, 182, 212, 0.1) 0%, transparent 40%);
 }
 
-.light .tech-bg {
+html.light .tech-bg {
   background: 
     radial-gradient(ellipse at 20% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 50%),
     radial-gradient(ellipse at 50% 100%, rgba(6, 182, 212, 0.05) 0%, transparent 40%);
+}
+
+/* ================================================
+   LIGHT MODE - Todas las secciones (html.light = mayor especificidad)
+   ================================================ */
+
+/* Hero en modo claro: sección + overlay + internos */
+html.light #hero {
+  @apply bg-dark-100;
+}
+
+/* Overlay del hero: gradiente oscuro -> claro (solo el div del overlay) */
+html.light #hero div.from-dark-950\/80.via-dark-950\/90.to-dark-950 {
+  background-image: linear-gradient(to bottom, rgb(241 245 249 / 0.85), rgb(248 250 252 / 0.95), rgb(241 245 249)) !important;
+}
+
+html.light #hero .text-white {
+  @apply text-dark-900;
+}
+
+html.light #hero .text-dark-300,
+html.light #hero .text-dark-400,
+html.light #hero .text-dark-500 {
+  @apply text-dark-700;
+}
+
+html.light #hero .text-cyber-400 {
+  @apply text-cyber-600;
+}
+
+html.light #hero .bg-dark-900\/50 {
+  @apply bg-white/90 border-dark-200;
+}
+
+html.light #hero .border-dark-700 {
+  @apply border-dark-200;
+}
+
+/* Servicios en modo claro */
+html.light #servicios {
+  @apply bg-dark-50;
+}
+
+html.light #servicios .text-white {
+  @apply text-dark-900;
+}
+
+html.light #servicios .text-dark-400 {
+  @apply text-dark-600;
+}
+
+html.light #servicios .text-cyber-400 {
+  @apply text-cyber-600;
+}
+
+html.light #servicios article {
+  @apply border-dark-200 bg-white;
+}
+
+/* Ubicación en modo claro */
+html.light #ubicacion {
+  @apply bg-dark-50;
+}
+
+html.light #ubicacion .text-white {
+  @apply text-dark-900;
+}
+
+html.light #ubicacion .text-dark-300,
+html.light #ubicacion .text-dark-400 {
+  @apply text-dark-600;
+}
+
+html.light #ubicacion .text-cyber-400 {
+  @apply text-cyber-600;
+}
+
+html.light #ubicacion .border-dark-700\/50.bg-dark-800\/50,
+html.light #ubicacion [class*="rounded-xl"].border-dark-700 {
+  @apply border-dark-200 bg-white;
+}
+
+/* Header en modo claro: siempre fondo claro (con y sin scroll) */
+html.light header {
+  @apply border-dark-200 bg-white/95 text-dark-800;
+}
+
+html.light header.bg-transparent,
+html.light header.bg-dark-950\/90 {
+  @apply border-dark-200 bg-white/95;
+}
+
+html.light header .text-white,
+html.light header .text-white\/90 {
+  @apply text-dark-900;
+}
+
+html.light header .text-dark-300,
+html.light header .text-dark-400 {
+  @apply text-dark-700;
+}
+
+html.light header .bg-dark-800\/50:hover {
+  @apply bg-dark-100;
+}
+
+html.light header .bg-dark-700 {
+  @apply bg-dark-300;
+}
+
+/* Menú móvil y overlay en modo claro */
+html.light [id="mobile-menu"] {
+  @apply bg-dark-900/60;
+}
+
+html.light aside.bg-dark-900 {
+  @apply border-dark-200 bg-white;
+}
+
+html.light aside.bg-dark-900 .text-white,
+html.light aside.bg-dark-900 .text-dark-400 {
+  @apply text-dark-800;
+}
+
+html.light aside.bg-dark-900 .border-dark-700\/50 {
+  @apply border-dark-200;
+}
+
+html.light aside.bg-dark-900 .hover\:bg-dark-800:hover,
+html.light aside.bg-dark-900 button.hover\:bg-dark-800:hover {
+  @apply bg-dark-100;
+}
+
+/* Footer en modo claro */
+html.light footer {
+  @apply border-dark-200 bg-dark-50 text-dark-800;
+}
+
+html.light footer .text-white {
+  @apply text-dark-900;
+}
+
+html.light footer .text-dark-400,
+html.light footer .text-dark-500 {
+  @apply text-dark-600;
+}
+
+html.light footer a:hover {
+  @apply text-cyber-600;
+}
+
+html.light footer .bg-dark-800 {
+  @apply bg-dark-200;
+}
+
+/* About y TechStack (buen contraste) */
+html.light #sobre-nosotros,
+html.light #tecnologias {
+  @apply bg-dark-50;
+}
+
+html.light #sobre-nosotros .text-white,
+html.light #tecnologias .text-white {
+  @apply text-dark-900;
+}
+
+html.light #sobre-nosotros .text-dark-300,
+html.light #tecnologias .text-dark-300 {
+  @apply text-dark-700;
+}
+
+html.light #sobre-nosotros .text-dark-400,
+html.light #tecnologias .text-dark-400 {
+  @apply text-dark-600;
+}
+
+html.light #sobre-nosotros .text-cyber-400,
+html.light #tecnologias .text-cyber-400 {
+  @apply text-cyber-600;
+}
+
+html.light #sobre-nosotros article {
+  @apply border-dark-200 bg-white;
+}
+
+html.light #sobre-nosotros article h3 {
+  @apply text-dark-900;
+}
+
+html.light #sobre-nosotros article p {
+  @apply text-dark-600;
+}
+
+html.light #tecnologias .grid > div {
+  @apply border-dark-200 bg-white;
+}
+
+html.light #tecnologias .grid > div h3 {
+  @apply text-dark-900;
+}
+
+html.light #tecnologias .bg-cyber-500\/20 {
+  @apply bg-cyber-100 text-cyber-800;
+}
+
+html.light #tecnologias .bg-accent-500\/20 {
+  @apply bg-accent-100 text-accent-800;
+}
+
+html.light #tecnologias .bg-dark-700\/50 {
+  @apply bg-dark-200 text-dark-700;
+}
+
+html.light #sobre-nosotros a.text-cyber-400 {
+  @apply text-cyber-600 hover:text-cyber-700;
+}
+
+/* Contacto en modo claro */
+html.light #contacto {
+  @apply bg-dark-50;
+}
+
+html.light #contacto .text-white {
+  @apply text-dark-900;
+}
+
+html.light #contacto .text-dark-300,
+html.light #contacto .text-dark-400,
+html.light #contacto .text-dark-500 {
+  @apply text-dark-700;
+}
+
+html.light #contacto .text-cyber-400 {
+  @apply text-cyber-600;
+}
+
+html.light #contacto a[href*="wa.me"] {
+  @apply border-green-200 bg-green-50;
+}
+
+html.light #contacto a[href*="t.me"] {
+  @apply border-sky-200 bg-sky-50;
+}
+
+html.light #contacto a[href^="tel:"],
+html.light #contacto a[href^="mailto:"] {
+  @apply border-dark-200 bg-white;
+}
+
+html.light #contacto .bg-amber-500\/10 {
+  @apply border-amber-200 bg-amber-50;
+}
+
+html.light #contacto .text-amber-200 {
+  @apply text-amber-900;
+}
+
+html.light #contacto .order-2.rounded-xl {
+  @apply border-dark-200 bg-white;
+}
+
+html.light #contacto form label {
+  @apply text-dark-700;
+}
+
+html.light #contacto form input,
+html.light #contacto form select,
+html.light #contacto form textarea {
+  @apply border-dark-300 bg-dark-50 text-dark-900 placeholder-dark-500;
 }

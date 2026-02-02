@@ -26,13 +26,12 @@ function AppContent() {
         Saltar al contenido principal
       </a>
 
-      {/* Header siempre visible, pasa por detrás del hero */}
       <Header theme={theme} onToggleTheme={toggleTheme} />
 
       <main id="main">
         <Hero />
-        <Services />
         <About />
+        <Services />
         <TechStack />
         <Location />
         <Contact />

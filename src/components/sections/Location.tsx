@@ -1,7 +1,8 @@
 /**
- * Ubicación - Optimizado para móviles
+ * Ubicación - Animaciones con React Awesome Reveal
  */
 import { useEffect, useState, lazy, Suspense } from 'react'
+import { Fade } from 'react-awesome-reveal'
 import { useTranslation } from '@/i18n/LanguageContext'
 import { SEO_CONFIG } from '@/config/seo'
 
@@ -38,21 +39,23 @@ export function Location() {
     >
       <div className="container-wide mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-12">
-          <span className="mb-2 inline-block text-xs font-semibold uppercase tracking-wider text-cyber-400 sm:mb-4 sm:text-sm">
-            {t.location.label}
-          </span>
-          <h2
-            id="location-title"
-            className="mb-3 font-display text-2xl font-bold text-white sm:mb-4 sm:text-3xl md:text-4xl"
-          >
-            {t.location.title}{' '}
-            <span className="text-gradient-cyber">Puerto Iguazú</span>
-          </h2>
-          <p className="text-sm text-dark-400 sm:text-base lg:text-lg">
-            {t.location.description}
-          </p>
-        </div>
+        <Fade direction="up" triggerOnce fraction={0.2} duration={500}>
+          <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-12">
+            <span className="mb-2 inline-block text-xs font-semibold uppercase tracking-wider text-cyber-400 sm:mb-4 sm:text-sm">
+              {t.location.label}
+            </span>
+            <h2
+              id="location-title"
+              className="mb-3 font-display text-2xl font-bold text-white sm:mb-4 sm:text-3xl md:text-4xl"
+            >
+              {t.location.title}{' '}
+              <span className="text-gradient-cyber">Puerto Iguazú</span>
+            </h2>
+            <p className="text-sm text-dark-400 sm:text-base lg:text-lg">
+              {t.location.description}
+            </p>
+          </div>
+        </Fade>
 
         <div className="grid gap-6 lg:grid-cols-5 lg:gap-8">
           {/* Mapa - primero en móvil */}

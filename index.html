@@ -70,6 +70,20 @@
     <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body>
+    <script>
+      (function() {
+        var root = document.documentElement;
+        root.classList.remove('light', 'dark');
+        var theme = localStorage.getItem('theme');
+        if (theme === 'light' || theme === 'dark') {
+          root.classList.add(theme);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          root.classList.add('dark');
+        } else {
+          root.classList.add('light');
+        }
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

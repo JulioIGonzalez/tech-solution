@@ -1,7 +1,8 @@
 /**
- * Contacto - Optimizado para móviles
+ * Contacto - Animaciones con React Awesome Reveal
  */
 import { useState, type FormEvent } from 'react'
+import { Fade } from 'react-awesome-reveal'
 import { useTranslation } from '@/i18n/LanguageContext'
 import { SEO_CONFIG } from '@/config/seo'
 import { getWhatsAppUrl, getCustomWhatsAppUrl } from '@/utils/whatsapp'
@@ -70,19 +71,21 @@ ${formData.mensaje}`
     >
       <div className="container-wide mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-12">
-          <span className="mb-2 inline-block text-xs font-semibold uppercase tracking-wider text-cyber-400 sm:mb-4 sm:text-sm">
-            {t.contact.label}
-          </span>
-          <h2 id="contact-title" className="mb-3 font-display text-2xl font-bold text-white sm:mb-4 sm:text-3xl md:text-4xl">
-            {t.contact.title}
-          </h2>
-          <p className="text-sm text-dark-400 sm:text-base lg:text-lg">{t.contact.description}</p>
-        </div>
+        <Fade direction="up" triggerOnce fraction={0.2} duration={500}>
+          <div className="mx-auto mb-8 max-w-3xl text-center sm:mb-12">
+            <span className="mb-2 inline-block text-xs font-semibold uppercase tracking-wider text-cyber-400 sm:mb-4 sm:text-sm">
+              {t.contact.label}
+            </span>
+            <h2 id="contact-title" className="mb-3 font-display text-2xl font-bold text-white sm:mb-4 sm:text-3xl md:text-4xl">
+              {t.contact.title}
+            </h2>
+            <p className="text-sm text-dark-400 sm:text-base lg:text-lg">{t.contact.description}</p>
+          </div>
+        </Fade>
 
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-          {/* Info de contacto - primero en móvil */}
-          <div className="order-1 space-y-3 sm:space-y-4 lg:order-2">
+          {/* Info de contacto - primero en móvil; max-width y márgenes para que no ocupen toda la pantalla */}
+          <div className="order-1 mx-auto w-full max-w-md space-y-3 px-2 sm:max-w-lg sm:space-y-4 sm:px-0 lg:order-2 lg:max-w-none lg:px-0">
             {/* WhatsApp */}
             <a
               href={getWhatsAppUrl('general')}

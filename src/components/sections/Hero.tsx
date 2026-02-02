@@ -1,9 +1,27 @@
 /**
- * Hero Section - Optimizado para móviles
+ * Hero Section - Animaciones con Framer Motion
  */
+import { motion } from 'framer-motion'
 import { useTranslation } from '@/i18n/LanguageContext'
 import { getWhatsAppUrl } from '@/utils/whatsapp'
 import { EVENTS } from '@/utils/analytics'
+
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+}
+
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: 'easeOut' as const },
+  },
+}
 
 export function Hero() {
   const { t } = useTranslation()
@@ -33,46 +51,50 @@ export function Hero() {
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 z-0 bg-tech-grid opacity-30" />
 
-      {/* Efectos de luz cyber - reducidos en móvil */}
+      {/* Efectos de luz cyber */}
       <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
         <div className="absolute -left-20 top-1/4 h-48 w-48 rounded-full bg-cyber-500/20 blur-[80px] sm:-left-40 sm:h-96 sm:w-96 sm:blur-[100px]" />
         <div className="absolute -right-20 top-1/2 h-40 w-40 rounded-full bg-accent-500/15 blur-[80px] sm:-right-40 sm:h-80 sm:w-80 sm:blur-[100px]" />
         <div className="absolute bottom-0 left-1/2 h-32 w-[300px] -translate-x-1/2 rounded-full bg-cyber-500/10 blur-[60px] sm:h-64 sm:w-[600px] sm:blur-[80px]" />
       </div>
 
-      {/* Contenido principal */}
-      <div className="container-wide relative z-10 mx-auto flex min-h-screen flex-col items-center justify-center px-4 pb-16 pt-20 sm:px-6 sm:py-20 lg:px-8">
-        {/* Badge de ubicación */}
-        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyber-500/30 bg-dark-900/50 px-3 py-1.5 text-xs font-medium text-cyber-400 shadow-cyber backdrop-blur-sm sm:mb-6 sm:px-4 sm:py-2 sm:text-sm">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyber-400 opacity-75"></span>
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-cyber-500"></span>
-          </span>
-          <span>📍 {t.hero.badge}</span>
-        </div>
+      {/* Contenido principal - Framer Motion stagger */}
+      <motion.div
+        className="container-wide relative z-10 mx-auto flex min-h-screen flex-col items-center justify-center px-4 pb-16 pt-20 sm:px-6 sm:py-20 lg:px-8"
+        variants={container}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div variants={item} className="mb-4 sm:mb-6">
+          <div className="inline-flex items-center gap-2 rounded-full border border-cyber-500/30 bg-dark-900/50 px-3 py-1.5 text-xs font-medium text-cyber-400 shadow-cyber backdrop-blur-sm sm:px-4 sm:py-2 sm:text-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyber-400 opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-cyber-500"></span>
+            </span>
+            <span>📍 {t.hero.badge}</span>
+          </div>
+        </motion.div>
 
-        {/* H1 SEO Optimizado - tamaños responsivos mejorados */}
-        <h1
+        <motion.h1
           id="hero-title"
+          variants={item}
           className="mb-4 max-w-5xl text-center font-display text-2xl font-extrabold leading-tight tracking-tight xs:text-3xl sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
         >
           <span className="text-white">{t.hero.title}</span>{' '}
           <span className="text-gradient-cyber">
             {t.hero.titleHighlight}
           </span>
-        </h1>
+        </motion.h1>
 
-        <p className="mb-3 max-w-3xl text-center text-base font-medium text-dark-300 sm:mb-4 sm:text-xl md:text-2xl lg:text-3xl">
+        <motion.p variants={item} className="mb-3 max-w-3xl text-center text-base font-medium text-dark-300 sm:mb-4 sm:text-xl md:text-2xl lg:text-3xl">
           {t.hero.subtitle}
-        </p>
+        </motion.p>
 
-        {/* Descripción - oculta en móviles muy pequeños */}
-        <p className="mb-6 hidden max-w-2xl text-center text-sm text-dark-400 sm:mb-10 sm:block sm:text-base lg:text-lg">
+        <motion.p variants={item} className="mb-6 hidden max-w-2xl text-center text-sm text-dark-400 sm:mb-10 sm:block sm:text-base lg:text-lg">
           {t.hero.description}
-        </p>
+        </motion.p>
 
-        {/* Trust signals - compactos en móvil */}
-        <div className="mb-6 flex flex-wrap items-center justify-center gap-2 text-xs text-dark-400 sm:mb-10 sm:gap-4 sm:text-sm md:gap-6">
+        <motion.div variants={item} className="mb-6 flex flex-wrap items-center justify-center gap-2 text-xs text-dark-400 sm:mb-10 sm:gap-4 sm:text-sm md:gap-6">
           <div className="flex items-center gap-1.5 rounded-full border border-dark-700 bg-dark-900/50 px-2.5 py-1.5 backdrop-blur-sm sm:gap-2 sm:px-4 sm:py-2">
             <span className="text-sm sm:text-lg">⭐</span>
             <span><strong className="text-cyber-400">4.9</strong> <span className="hidden xs:inline">{t.hero.trust.rating}</span></span>
@@ -86,10 +108,9 @@ export function Hero() {
             <span className="hidden xs:inline">{t.hero.trust.warranty}</span>
             <span className="xs:hidden">Garantía</span>
           </div>
-        </div>
+        </motion.div>
 
-        {/* CTAs - full width en móvil */}
-        <div className="flex w-full max-w-md flex-col items-center gap-3 sm:w-auto sm:max-w-none sm:flex-row sm:gap-4">
+        <motion.div variants={item} className="flex w-full max-w-md flex-col items-center gap-3 sm:w-auto sm:max-w-none sm:flex-row sm:gap-4">
           <a
             href={getWhatsAppUrl('general')}
             target="_blank"
@@ -109,17 +130,18 @@ export function Hero() {
           >
             {t.hero.ctaSecondary}
           </a>
-        </div>
+        </motion.div>
 
-        {/* Scroll indicator - oculto en móvil pequeño */}
-        <div className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 animate-bounce sm:bottom-8 sm:block">
-          <a href="#servicios" aria-label="Ir a servicios" className="text-dark-500 transition-colors hover:text-cyber-400">
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
+        <motion.div variants={item} className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 sm:bottom-8 sm:block">
+          <a href="#servicios" aria-label="Ir a servicios" className="block text-dark-500 transition-colors hover:text-cyber-400">
+            <motion.span animate={{ y: [0, 6, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}>
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </motion.span>
           </a>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   )
 }
