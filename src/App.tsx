@@ -1,21 +1,24 @@
 /**
  * App principal - Web empresarial TechSolutions Iguazú
  * Paleta Cyberpunk, SEO optimizado
+ * Secciones inferiores con lazy loading para carga más rápida
  */
+import { lazy, Suspense } from 'react'
 import { useTheme } from '@/hooks/useTheme'
 import { LanguageProvider } from '@/i18n/LanguageContext'
 import { SchemaOrg } from '@/seo/SchemaOrg'
 import { Header } from '@/components/Layout/Header'
 import { Footer } from '@/components/Layout/Footer'
 import { Hero } from '@/components/sections/Hero'
-import { Portfolio } from '@/components/sections/Portfolio'
-import { About } from '@/components/sections/About'
-import { Services } from '@/components/sections/Services'
-import { TechStack } from '@/components/sections/TechStack'
-import { Location } from '@/components/sections/Location'
-import { FAQ } from '@/components/sections/FAQ'
-import { Contact } from '@/components/sections/Contact'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
+
+const Portfolio = lazy(() => import('@/components/sections/Portfolio').then((m) => ({ default: m.Portfolio })))
+const About = lazy(() => import('@/components/sections/About').then((m) => ({ default: m.About })))
+const Services = lazy(() => import('@/components/sections/Services').then((m) => ({ default: m.Services })))
+const TechStack = lazy(() => import('@/components/sections/TechStack').then((m) => ({ default: m.TechStack })))
+const Location = lazy(() => import('@/components/sections/Location').then((m) => ({ default: m.Location })))
+const FAQ = lazy(() => import('@/components/sections/FAQ').then((m) => ({ default: m.FAQ })))
+const Contact = lazy(() => import('@/components/sections/Contact').then((m) => ({ default: m.Contact })))
 
 function AppContent() {
   const { theme, toggleTheme } = useTheme()
@@ -32,13 +35,15 @@ function AppContent() {
 
       <main id="main">
         <Hero />
-        <Portfolio />
-        <About />
-        <Services />
-        <TechStack />
-        <Location />
-        <FAQ />
-        <Contact />
+        <Suspense fallback={null}>
+          <Portfolio />
+          <About />
+          <Services />
+          <TechStack />
+          <Location />
+          <FAQ />
+          <Contact />
+        </Suspense>
       </main>
 
       <Footer />

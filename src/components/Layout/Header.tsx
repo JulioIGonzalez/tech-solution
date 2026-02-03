@@ -58,23 +58,6 @@ function PortfolioButton({ onNavigate }: { onNavigate?: () => void }) {
   )
 }
 
-// Botón Ver servicios en la barra de navegación
-function ServicesButton({ onNavigate }: { onNavigate?: () => void }) {
-  const { t } = useTranslation()
-  return (
-    <a
-      href="#servicios"
-      onClick={onNavigate}
-      className="inline-flex items-center gap-2 rounded-lg border-2 border-cyber-500/50 bg-dark-900/50 px-4 py-2 text-sm font-semibold text-cyber-400 transition-all hover:border-cyber-400 hover:bg-cyber-500/10 hover:text-cyber-300"
-    >
-      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-      </svg>
-      {t.hero.ctaSecondary}
-    </a>
-  )
-}
-
 function NavLinks({
   onNavigate,
   className = '',
@@ -85,7 +68,6 @@ function NavLinks({
   const { t } = useTranslation()
   
   const navLinks = [
-    { href: '#servicios', label: t.nav.services },
     { href: '#sobre-nosotros', label: t.nav.about },
     { href: '#tecnologias', label: t.nav.tech },
     { href: '#ubicacion', label: t.nav.location },
@@ -116,9 +98,6 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
 
   const closeMenu = () => setMenuOpen(false)
 
-  // Controles flotantes visibles desde el inicio para poder cambiar idioma y tema
-  const showFloatingControls = true
-
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') closeMenu()
@@ -146,7 +125,7 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
             className="group flex items-center gap-2 font-display text-lg font-bold transition-all duration-300"
           >
             <img
-              src="/logo-techsolutions.png"
+              src="/logo.svg"
               alt="TechSolutions IGUAZU - Web • Repair • Parts"
               className="h-9 w-auto object-contain transition-all duration-300 group-hover:opacity-90"
             />
@@ -158,7 +137,6 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
           {/* Desktop nav */}
           <nav aria-label="Navegación principal" className="hidden items-center gap-1 md:flex">
             <PortfolioButton />
-            <ServicesButton />
             <div className="mx-2 h-5 w-px bg-dark-700" />
             <NavLinks className="flex items-center gap-0.5" />
           </nav>
@@ -231,7 +209,6 @@ export function Header({ theme, onToggleTheme }: HeaderProps) {
         <nav className="flex flex-col gap-3 p-4" aria-label="Navegación móvil">
           <div className="mb-2 flex flex-col gap-2">
             <PortfolioButton onNavigate={closeMenu} />
-            <ServicesButton onNavigate={closeMenu} />
           </div>
           <NavLinks onNavigate={closeMenu} className="flex flex-col gap-1" />
         </nav>

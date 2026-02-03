@@ -4,13 +4,13 @@
 import { motion } from 'framer-motion'
 import { useTranslation } from '@/i18n/LanguageContext'
 
-// Configura aquí tus proyectos en producción
+// Configura aquí tus proyectos en producción (srcset para carga responsive)
 const PROJECTS = [
   {
     id: 1,
     title: 'E-commerce Ejemplo',
     description: 'Tienda online completa con carrito y pagos',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=75',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=75',
     url: 'https://ejemplo1.com',
     tags: ['E-commerce', 'React', 'Node.js'],
   },
@@ -18,7 +18,7 @@ const PROJECTS = [
     id: 2,
     title: 'Landing Page Empresa',
     description: 'Sitio corporativo moderno y responsive',
-    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=800&q=75',
+    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&q=75',
     url: 'https://ejemplo2.com',
     tags: ['Landing Page', 'Diseño Web'],
   },
@@ -26,7 +26,7 @@ const PROJECTS = [
     id: 3,
     title: 'Sistema de Gestión',
     description: 'Aplicación web para administración de negocios',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=75',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=75',
     url: 'https://ejemplo3.com',
     tags: ['Dashboard', 'Full Stack'],
   },
@@ -45,7 +45,7 @@ const item = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' },
+    transition: { duration: 0.5, ease: 'easeOut' as const },
   },
 }
 
@@ -71,7 +71,7 @@ export function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-12 text-center sm:mb-16"
+          className="mb-4 text-center sm:mb-6"
         >
           <span className="mb-3 inline-block rounded-full border border-cyber-500/30 bg-cyber-500/10 px-4 py-1.5 text-sm font-medium text-cyber-400">
             {t.portfolio.label}
@@ -104,10 +104,12 @@ export function Portfolio() {
               variants={item}
               className="group relative overflow-hidden rounded-2xl border border-dark-700/50 bg-dark-900/50 backdrop-blur-sm transition-all duration-300 hover:border-cyber-500/50 hover:shadow-lg hover:shadow-cyber-500/10"
             >
-              {/* Imagen */}
+              {/* Imagen - srcset responsive para carga más rápida */}
               <div className="aspect-video overflow-hidden">
                 <img
-                  src={project.image}
+                  src={`${project.image}&w=800`}
+                  srcSet={`${project.image}&w=400 400w, ${project.image}&w=800 800w`}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   alt={project.title}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
@@ -153,7 +155,7 @@ export function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 text-center sm:mt-16"
+          className="mt-4 text-center sm:mt-6"
         >
           <p className="mb-4 text-dark-400">
             {t.portfolio.cta}

@@ -7,7 +7,7 @@
    ================================================ */
 
 @layer base {
-  html {
+    html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -253,69 +253,128 @@ html.light #hero [class~="text-cyber-400"] {
   color: #0e7490 !important;
 }
 
-/* Hero web block - Modo oscuro: texto destacado + precio con gradiente */
+/* Hero web block - efecto llamativo: glow + transición */
+#hero .hero-web-block {
+  box-shadow:
+    0 0 30px rgba(6, 182, 212, 0.25),
+    0 0 60px rgba(6, 182, 212, 0.12),
+    inset 0 0 40px rgba(251, 191, 36, 0.04);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+#hero .hero-web-block:hover {
+  box-shadow:
+    0 0 45px rgba(6, 182, 212, 0.4),
+    0 0 90px rgba(6, 182, 212, 0.2),
+    inset 0 0 60px rgba(251, 191, 36, 0.08);
+}
+
+/* Botón WhatsApp - brillo intenso al hover */
+#hero .hero-whatsapp-btn:hover {
+  box-shadow:
+    0 0 25px rgba(6, 182, 212, 0.6),
+    0 0 50px rgba(6, 182, 212, 0.4),
+    0 0 75px rgba(6, 182, 212, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Hero web block - sin retraso en cambio de tema (color/background instantáneos) */
+#hero .hero-web-block .hero-web-title,
+#hero .hero-web-block .hero-web-title *,
+#hero .hero-web-block .hero-web-subtext {
+  transition: none;
+}
+
+/* Hero web block - Modo oscuro: texto destacado + brillo */
 html.dark #hero .hero-web-block .hero-web-title-text,
 html:not(.light) #hero .hero-web-block .hero-web-title-text {
-  color: #fcd34d !important; /* amber-300, amarillo dorado */
-  text-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+  color: #fef08a !important; /* yellow-200, más brillante */
+  text-shadow:
+    0 0 20px rgba(254, 240, 138, 0.6),
+    0 0 40px rgba(251, 191, 36, 0.3),
+    0 0 60px rgba(251, 191, 36, 0.2);
 }
 
 html.dark #hero .hero-web-block .hero-web-price,
 html:not(.light) #hero .hero-web-block .hero-web-price {
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #fcd34d 100%);
+  background: linear-gradient(135deg, #fef08a 0%, #fbbf24 50%, #f59e0b 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 1.15em;
   font-weight: 800;
   letter-spacing: 0.02em;
-  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.5)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 0 15px rgba(254, 240, 138, 0.7)) drop-shadow(0 0 30px rgba(251, 191, 36, 0.4)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 html.dark #hero .hero-web-block .hero-web-subtext,
 html:not(.light) #hero .hero-web-block .hero-web-subtext {
-  color: #fde68a !important; /* amber-200 */
+  color: #fef08a !important;
+  text-shadow: 0 0 15px rgba(254, 240, 138, 0.5);
 }
 
-/* Hero web block - Modo claro: color con contraste sobre fondo oscuro */
+/* Hero web block - Modo claro: mismo efecto llamativo que modo oscuro */
 html.light #hero .hero-web-block {
-  border-color: rgb(8 145 178 / 0.5);
+  border-color: rgb(8 145 178 / 0.6);
   background-color: #0f172a;
+  box-shadow:
+    0 0 30px rgba(8, 145, 178, 0.3),
+    0 0 60px rgba(6, 182, 212, 0.15),
+    inset 0 0 40px rgba(251, 191, 36, 0.05);
+}
+
+html.light #hero .hero-web-block:hover {
+  box-shadow:
+    0 0 45px rgba(8, 145, 178, 0.45),
+    0 0 90px rgba(6, 182, 212, 0.25),
+    inset 0 0 60px rgba(251, 191, 36, 0.1);
 }
 
 html.light #hero .hero-web-block .hero-web-title-text {
-  color: #fde68a !important;
-  text-shadow: 0 0 16px rgba(253, 230, 138, 0.5);
+  color: #fef9c3 !important;
+  text-shadow:
+    0 0 20px rgba(254, 249, 195, 0.8),
+    0 0 40px rgba(254, 240, 138, 0.5),
+    0 0 60px rgba(251, 191, 36, 0.3);
 }
 
 html.light #hero .hero-web-block .hero-web-price {
-  background: linear-gradient(135deg, #fde68a 0%, #fcd34d 50%, #fbbf24 100%);
+  background: linear-gradient(135deg, #fef08a 0%, #fbbf24 50%, #f59e0b 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 1.15em;
   font-weight: 800;
   letter-spacing: 0.02em;
-  filter: drop-shadow(0 0 8px rgba(253, 230, 138, 0.5)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 0 15px rgba(254, 240, 138, 0.7)) drop-shadow(0 0 30px rgba(251, 191, 36, 0.4)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 html.light #hero .hero-web-block .hero-web-subtext,
 html.light #hero .hero-web-block .hero-web-subtext[class~="text-dark-300"] {
-  color: #fcd34d !important; /* amber-300, dorado claro con contraste */
+  color: #fef08a !important;
+  text-shadow:
+    0 0 15px rgba(254, 240, 138, 0.6),
+    0 0 25px rgba(251, 191, 36, 0.3);
 }
 
 html.light #hero .hero-whatsapp-btn {
   color: #ffffff;
   border-color: rgb(8 145 178 / 0.7);
   background: linear-gradient(to right, #0891b2, #06b6d4);
-  box-shadow: 0 4px 14px rgba(8, 145, 178, 0.35);
+  box-shadow:
+    0 0 20px rgba(8, 145, 178, 0.35),
+    0 4px 14px rgba(8, 145, 178, 0.3);
 }
 
 html.light #hero .hero-whatsapp-btn:hover {
   color: #ffffff;
-  border-color: #0891b2;
-  background: linear-gradient(to right, #0e7490, #0891b2);
-  box-shadow: 0 6px 20px rgba(8, 145, 178, 0.45);
+  border-color: #22d3ee;
+  background: linear-gradient(to right, #06b6d4, #22d3ee);
+  box-shadow:
+    0 0 30px rgba(8, 145, 178, 0.7),
+    0 0 60px rgba(6, 182, 212, 0.5),
+    0 0 90px rgba(34, 211, 238, 0.25),
+    inset 0 0 35px rgba(255, 255, 255, 0.2) !important;
 }
 
 html.light #hero [class~="text-dark-300"],

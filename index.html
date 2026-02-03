@@ -59,10 +59,13 @@
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     
-    <!-- Fonts: Outfit - moderna, geométrica, tech -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" as="style" />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
+    <!-- Fonts: Outfit - pesos 400, 500, 600, 700, 800 (reducido de 6 a 5 para carga más rápida) -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" /></noscript>
+    
+    <!-- Preload imagen LCP (Hero) -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&amp;fit=crop&amp;w=800&amp;q=75&amp;fm=webp" />
     
     <!-- Favicon: SVG único (añadir apple-touch-icon.png, favicon-32x32.png, favicon-16x16.png cuando existan) -->
     <link rel="apple-touch-icon" href="/favicon.svg" />
