@@ -82,22 +82,22 @@ export function Services() {
                     {serviceT.shortTitle}
                   </h3>
 
-                  {/* Descripción */}
-                  <p className="mb-3 text-xs text-dark-400 sm:mb-4 sm:text-sm">
+                  {/* Descripción - contraste mejorado para legibilidad */}
+                  <p className="mb-3 text-xs text-dark-200 sm:mb-4 sm:text-sm sm:text-dark-300">
                     {serviceT.description}
                   </p>
 
-                  {/* Features */}
-                  <ul className="mb-4 space-y-1.5 sm:mb-6 sm:space-y-2">
-                    {serviceT.features.slice(0, 3).map((feature, idx) => (
+                  {/* Features - siempre visibles las 3 en mobile y desktop */}
+                  <ul className="mb-4 min-h-[4.5rem] space-y-1.5 sm:mb-6 sm:min-h-0 sm:space-y-2">
+                    {serviceT.features.slice(0, 3).map((feature) => (
                       <li
                         key={feature}
-                        className={`flex items-center gap-2 text-xs text-dark-300 sm:text-sm ${idx >= 2 ? 'hidden sm:flex' : ''}`}
+                        className="flex items-start gap-2 text-xs text-dark-200 sm:text-sm sm:text-dark-300"
                       >
-                        <svg className="h-3.5 w-3.5 flex-shrink-0 text-cyber-400 sm:h-4 sm:w-4" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-cyber-400 sm:h-4 sm:w-4" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
-                        <span className="line-clamp-1">{feature}</span>
+                        <span className="line-clamp-2 break-words">{feature}</span>
                       </li>
                     ))}
                   </ul>

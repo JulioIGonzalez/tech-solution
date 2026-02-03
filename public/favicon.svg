@@ -1,4 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="6" fill="#0ea5e9"/>
-  <path d="M8 12h16v2H8v-2zm0 4h12v2H8v-2zm0 4h10v2H8v-2z" fill="white"/>
+  <defs>
+    <linearGradient id="tsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="6" fill="url(#tsGrad)"/>
+  <text x="16" y="21" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">TS</text>
 </svg>

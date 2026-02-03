@@ -11,6 +11,3 @@ Sitemap: https://techsolutionsiguazu.com/sitemap.xml
 Disallow: /api/
 Disallow: /_*
 Disallow: /admin/
-
-# Crawl-delay para ser amigable con los servidores
-Crawl-delay: 1

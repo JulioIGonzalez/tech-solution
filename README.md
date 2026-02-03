@@ -16,6 +16,7 @@ Web empresarial tecnológica de alto rendimiento para **TechSolutions Iguazú**,
 personal-web/
 ├── public/
 │   ├── favicon.svg
+│   ├── logo.svg          # Logo para Schema.org y header
 │   ├── robots.txt
 │   ├── sitemap.xml
 │   └── site.webmanifest
@@ -121,6 +122,9 @@ Editar `src/config/tech.ts`:
 
 ### 4. WhatsApp
 El número se configura en `src/config/seo.ts` → `business.whatsapp`
+
+### 5. Imagen para redes sociales (Open Graph)
+Añade `public/og-image.jpg` (1200×630 px) para que al compartir el enlace en Facebook, Twitter, WhatsApp, etc. se muestre una imagen. Si no existe, las redes usarán su fallback.
 
 ## 📱 Automatización
 

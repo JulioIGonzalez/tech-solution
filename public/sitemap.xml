@@ -40,5 +40,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+  <url>
+    <loc>https://techsolutionsiguazu.com/#preguntas-frecuentes</loc>
+    <lastmod>2026-02-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
 </urlset>

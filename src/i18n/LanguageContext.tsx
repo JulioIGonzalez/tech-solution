@@ -3,7 +3,7 @@
  * Persiste la preferencia en localStorage
  */
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react'
-import { translations, type Language } from './translations'
+import { translations, DOCUMENT_TITLES, type Language } from './translations'
 
 // Tipo más flexible para las traducciones
 type TranslationsType = typeof translations.es | typeof translations.en | typeof translations.pt
@@ -46,9 +46,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }
 
   useEffect(() => {
-    // Establecer idioma inicial en el HTML
     document.documentElement.lang = language === 'pt' ? 'pt-BR' : language === 'en' ? 'en' : 'es'
-  }, [])
+  }, [language])
+
+  useEffect(() => {
+    document.title = DOCUMENT_TITLES[language]
+  }, [language])
 
   const t = translations[language] as TranslationsType
 

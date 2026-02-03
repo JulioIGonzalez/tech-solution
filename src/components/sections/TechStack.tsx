@@ -3,7 +3,7 @@
  */
 import { Fade, Slide } from 'react-awesome-reveal'
 import { useTranslation } from '@/i18n/LanguageContext'
-import { TECH_STACK } from '@/config/tech'
+import { TECH_STACK, getTechIconUrl } from '@/config/tech'
 
 export function TechStack() {
   const { t } = useTranslation()
@@ -56,7 +56,7 @@ export function TechStack() {
                   {category.items.map((tech) => (
                     <span
                       key={tech.name}
-                      className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium transition-all sm:px-3 sm:py-1.5 sm:text-sm ${
+                      className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium transition-all sm:px-3 sm:py-1.5 sm:text-sm ${
                         tech.level === 'expert'
                           ? 'bg-cyber-500/20 text-cyber-300 hover:bg-cyber-500/30'
                           : tech.level === 'advanced'
@@ -64,7 +64,18 @@ export function TechStack() {
                           : 'bg-dark-700/50 text-dark-300 hover:bg-dark-700'
                       }`}
                     >
-                      {tech.name}
+                      {tech.icon ? (
+                        <img
+                          src={getTechIconUrl(tech.icon)}
+                          alt=""
+                          width={16}
+                          height={16}
+                          className="h-4 w-4 flex-shrink-0 sm:h-[18px] sm:w-[18px]"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : null}
+                      <span>{tech.name}</span>
                     </span>
                   ))}
                 </div>

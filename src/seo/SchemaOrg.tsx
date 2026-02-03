@@ -1,15 +1,17 @@
 /**
  * Schema.org JSON-LD para SEO Local
- * LocalBusiness + Organization + WebSite
+ * LocalBusiness + Service + FAQPage + Organization + WebSite
+ * Optimizado para Google Maps + búsqueda "cerca de mí"
  */
 
 import { SEO_CONFIG } from '@/config/seo'
 import { SERVICES } from '@/config/services'
+import { FAQ_LOCAL } from '@/config/faq'
 
 const { business, siteUrl } = SEO_CONFIG
 
 /**
- * Schema LocalBusiness para SEO local
+ * Schema LocalBusiness para SEO local (NAP consistente, ciudad, zona)
  */
 export function getLocalBusinessSchema() {
   return {
@@ -23,7 +25,7 @@ export function getLocalBusinessSchema() {
     telephone: business.phone,
     email: business.email,
     foundingDate: business.foundingYear.toString(),
-    image: `${siteUrl}/og-image.jpg`,
+    image: [`${siteUrl}/og-image.jpg`, `${siteUrl}/logo.svg`],
     logo: `${siteUrl}/logo.svg`,
     priceRange: '$$',
     currenciesAccepted: 'ARS',
@@ -55,34 +57,43 @@ export function getLocalBusinessSchema() {
         closes: '13:00',
       },
     ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: business.phone,
+      contactType: 'customer service',
+      areaServed: { '@type': 'City', name: 'Puerto Iguazú', sameAs: 'https://www.wikidata.org/wiki/Q201953' },
+      availableLanguage: ['Spanish', 'English', 'Portuguese'],
+      url: `https://wa.me/${business.whatsapp}`,
+    },
     sameAs: [
       business.social.instagram,
       business.social.facebook,
       business.social.linkedin,
     ],
+    serviceType: [
+      'Reparación de celulares',
+      'Reparación de computadoras',
+      'Servicio técnico informático',
+      'Creación y desarrollo de páginas web',
+      'Instalación de cámaras de seguridad',
+    ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Servicios de TechSolutions Iguazú',
+      name: 'Servicios en Puerto Iguazú',
       itemListElement: SERVICES.map((service, index) => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
           name: service.title,
           description: service.description,
+          areaServed: { '@type': 'City', name: 'Puerto Iguazú' },
         },
         position: index + 1,
       })),
     },
     areaServed: [
-      {
-        '@type': 'City',
-        name: 'Puerto Iguazú',
-        '@id': 'https://www.wikidata.org/wiki/Q201953',
-      },
-      {
-        '@type': 'State',
-        name: 'Misiones',
-      },
+      { '@type': 'City', name: 'Puerto Iguazú', '@id': 'https://www.wikidata.org/wiki/Q201953' },
+      { '@type': 'State', name: 'Misiones' },
     ],
     aggregateRating: {
       '@type': 'AggregateRating',
@@ -95,7 +106,25 @@ export function getLocalBusinessSchema() {
 }
 
 /**
- * Schema WebSite para sitelinks en Google
+ * Schema FAQPage para rich results y búsqueda local
+ */
+export function getFAQSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ_LOCAL.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  }
+}
+
+/**
+ * Schema WebSite para sitelinks en Google (búsqueda local)
  */
 export function getWebSiteSchema() {
   return {
@@ -106,8 +135,11 @@ export function getWebSiteSchema() {
     name: business.name,
     description: business.description,
     inLanguage: 'es-AR',
-    publisher: {
-      '@id': `${siteUrl}/#organization`,
+    publisher: { '@id': `${siteUrl}/#organization` },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: `${siteUrl}/#servicios?q={search_term_string}` },
+      'query-input': 'required name=search_term_string',
     },
   }
 }
@@ -127,7 +159,7 @@ export function getOrganizationSchema() {
       '@type': 'ContactPoint',
       telephone: business.phone,
       contactType: 'customer service',
-      areaServed: 'AR',
+      areaServed: { '@type': 'City', name: 'Puerto Iguazú' },
       availableLanguage: ['Spanish', 'English', 'Portuguese'],
     },
     sameAs: [
@@ -160,6 +192,7 @@ export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
 export function SchemaOrg() {
   const schemas = [
     getLocalBusinessSchema(),
+    getFAQSchema(),
     getWebSiteSchema(),
     getOrganizationSchema(),
   ]

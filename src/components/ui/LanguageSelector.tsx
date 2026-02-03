@@ -63,7 +63,7 @@ export function LanguageSelector() {
         <ul
           role="listbox"
           aria-label="Idiomas disponibles"
-          className="absolute right-0 top-full z-50 mt-1 min-w-[140px] overflow-hidden rounded-lg border border-dark-700 bg-dark-900 py-1 shadow-lg"
+          className="absolute bottom-full right-0 z-50 mb-1 min-w-[140px] overflow-hidden rounded-lg border border-dark-700 bg-dark-900 py-1 shadow-lg"
         >
           {LANGUAGES.map((lang) => (
             <li key={lang.code}>

@@ -10,31 +10,51 @@ export const LANGUAGES: { code: Language; name: string; flag: string }[] = [
   { code: 'pt', name: 'Português', flag: '🇧🇷' },
 ]
 
+export const DOCUMENT_TITLES = {
+  es: 'TS | TechSolutions Iguazú – Servicio Técnico en Puerto Iguazú',
+  en: 'TS | TechSolutions Iguazú – Tech Service in Puerto Iguazú',
+  pt: 'TS | TechSolutions Iguazú – Serviço Técnico em Puerto Iguazú',
+} as const
+
 export const translations = {
   es: {
     // Navegación
     nav: {
       home: 'Inicio',
+      portfolio: 'Mis Trabajos',
       services: 'Servicios',
       about: 'Nosotros',
       tech: 'Tecnologías',
       location: 'Ubicación',
+      faq: 'Preguntas',
       contact: 'Contacto',
     },
-    // Hero
+    // Hero (H1 local, "cerca de mí", ciudad objetivo)
     hero: {
       badge: 'Puerto Iguazú, Misiones',
-      title: 'Soluciones Tecnológicas en',
+      title: 'Creamos tu Página Web Profesional en',
       titleHighlight: 'Puerto Iguazú',
-      subtitle: 'Reparación de Celulares, Computadoras, Cámaras de Seguridad y Desarrollo Web',
-      description: 'Servicio técnico profesional con diagnóstico gratuito y garantía en todos nuestros trabajos. Atendemos en nuestro local y a domicilio en Puerto Iguazú y alrededores.',
-      cta: 'Consultá por WhatsApp',
+      subtitle: 'Diseño web, desarrollo a medida y soluciones digitales para tu negocio',
+      description: 'Servicio técnico en Puerto Iguazú con diagnóstico gratuito y garantía. Diseño y desarrollo de sitios web corporativos. Atendemos en local y a domicilio.',
+      webHighlight: 'Páginas web a partir de',
+      webPrice: '100 mil pesos',
+      webSubtext: 'Sitios corporativos, landing pages, e-commerce',
+      webCta: 'Consultar por mi web',
+      cta: 'Ver mis trabajos',
       ctaSecondary: 'Ver servicios',
       trust: {
         rating: 'en Google',
         clients: 'clientes satisfechos',
         warranty: 'Garantía escrita',
       },
+    },
+    // Portfolio
+    portfolio: {
+      label: 'Portfolio',
+      title: 'Mis Trabajos en Producción',
+      description: 'Proyectos web que he desarrollado para clientes. Sitios modernos, rápidos y optimizados.',
+      cta: '¿Te gustaría tener un sitio como estos?',
+      ctaButton: 'Solicitá tu presupuesto',
     },
     // Servicios
     services: {
@@ -155,11 +175,17 @@ export const translations = {
       howToGet: 'Cómo llegar',
       loadingMap: 'Cargando mapa...',
     },
+    // FAQ (SEO local + conversión)
+    faq: {
+      label: 'Preguntas frecuentes',
+      title: 'Consultas sobre nuestro servicio en Puerto Iguazú',
+      description: 'Respuestas a las dudas más comunes de nuestros clientes en Puerto Iguazú y Misiones.',
+    },
     // Contacto
     contact: {
       label: 'Contacto',
-      title: 'Consultá sin compromiso',
-      description: 'Escribinos por WhatsApp, llamanos o completá el formulario. Te respondemos a la brevedad con un presupuesto sin cargo.',
+      title: 'Consultá sin compromiso desde Puerto Iguazú',
+      description: 'Escribinos por WhatsApp, llamanos o completá el formulario. Te respondemos a la brevedad con un presupuesto sin cargo. Atendemos en Puerto Iguazú y zona.',
       form: {
         title: 'Envianos tu consulta',
         name: 'Nombre completo',
@@ -209,25 +235,38 @@ export const translations = {
   en: {
     nav: {
       home: 'Home',
+      portfolio: 'My Work',
       services: 'Services',
       about: 'About',
       tech: 'Technologies',
       location: 'Location',
+      faq: 'FAQ',
       contact: 'Contact',
     },
     hero: {
       badge: 'Puerto Iguazú, Misiones',
-      title: 'Tech Solutions in',
+      title: 'We Build Your Professional Website in',
       titleHighlight: 'Puerto Iguazú',
-      subtitle: 'Cell Phone & Computer Repair, Security Cameras and Web Development',
-      description: 'Professional technical service with free diagnosis and warranty on all our work. We serve at our store and at home in Puerto Iguazú and surroundings.',
-      cta: 'Contact via WhatsApp',
+      subtitle: 'Web design, custom development and digital solutions for your business',
+      description: 'Professional technical service with free diagnosis and warranty. Corporate website design and development. We serve at our store and at home in Puerto Iguazú.',
+      webHighlight: 'Web pages from',
+      webPrice: '100,000 pesos',
+      webSubtext: 'Corporate sites, landing pages, e-commerce',
+      webCta: 'Inquire about my website',
+      cta: 'View my work',
       ctaSecondary: 'View services',
       trust: {
         rating: 'on Google',
         clients: 'satisfied customers',
         warranty: 'Written warranty',
       },
+    },
+    portfolio: {
+      label: 'Portfolio',
+      title: 'My Work in Production',
+      description: 'Web projects I have developed for clients. Modern, fast and optimized sites.',
+      cta: 'Would you like to have a site like these?',
+      ctaButton: 'Request a quote',
     },
     services: {
       title: 'Our Services',
@@ -344,6 +383,11 @@ export const translations = {
       howToGet: 'Get directions',
       loadingMap: 'Loading map...',
     },
+    faq: {
+      label: 'Frequently asked questions',
+      title: 'Questions about our service in Puerto Iguazú',
+      description: 'Answers to the most common questions from our clients in Puerto Iguazú and Misiones.',
+    },
     contact: {
       label: 'Contact',
       title: 'Contact us without obligation',
@@ -395,25 +439,38 @@ export const translations = {
   pt: {
     nav: {
       home: 'Início',
+      portfolio: 'Meus Trabalhos',
       services: 'Serviços',
       about: 'Sobre',
       tech: 'Tecnologias',
       location: 'Localização',
+      faq: 'Perguntas',
       contact: 'Contato',
     },
     hero: {
       badge: 'Puerto Iguazú, Misiones',
-      title: 'Soluções Tecnológicas em',
+      title: 'Criamos seu Site Profissional em',
       titleHighlight: 'Puerto Iguazú',
-      subtitle: 'Reparo de Celulares, Computadores, Câmeras de Segurança e Desenvolvimento Web',
-      description: 'Serviço técnico profissional com diagnóstico gratuito e garantia em todos os nossos trabalhos. Atendemos em nossa loja e em domicílio em Puerto Iguazú e arredores.',
-      cta: 'Contato via WhatsApp',
+      subtitle: 'Design web, desenvolvimento sob medida e soluções digitais para seu negócio',
+      description: 'Serviço técnico com diagnóstico gratuito e garantia. Design e desenvolvimento de sites corporativos. Atendemos em loja e em domicílio.',
+      webHighlight: 'Páginas web a partir de',
+      webPrice: '100 mil pesos',
+      webSubtext: 'Sites corporativos, landing pages, e-commerce',
+      webCta: 'Consultar sobre meu site',
+      cta: 'Ver meus trabalhos',
       ctaSecondary: 'Ver serviços',
       trust: {
         rating: 'no Google',
         clients: 'clientes satisfeitos',
         warranty: 'Garantia escrita',
       },
+    },
+    portfolio: {
+      label: 'Portfólio',
+      title: 'Meus Trabalhos em Produção',
+      description: 'Projetos web que desenvolvi para clientes. Sites modernos, rápidos e otimizados.',
+      cta: 'Gostaria de ter um site como estes?',
+      ctaButton: 'Solicite um orçamento',
     },
     services: {
       title: 'Nossos Serviços',
@@ -529,6 +586,11 @@ export const translations = {
       },
       howToGet: 'Como chegar',
       loadingMap: 'Carregando mapa...',
+    },
+    faq: {
+      label: 'Perguntas frequentes',
+      title: 'Dúvidas sobre nosso serviço em Puerto Iguazú',
+      description: 'Respostas às dúvidas mais comuns dos nossos clientes em Puerto Iguazú e Misiones.',
     },
     contact: {
       label: 'Contato',

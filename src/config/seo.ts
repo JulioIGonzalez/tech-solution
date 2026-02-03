@@ -39,11 +39,13 @@ export const SEO_CONFIG = {
     },
   },
 
-  // Keywords SEO
+  // Keywords SEO Local (Google Maps + Search, "cerca de mí")
   keywords: {
     primary: [
       'reparación de celulares en Puerto Iguazú',
       'reparación de computadoras en Puerto Iguazú',
+      'servicio técnico informático Puerto Iguazú',
+      'creación y desarrollo de páginas web Puerto Iguazú',
       'desarrollo web en Misiones',
       'instalación cámaras de seguridad Puerto Iguazú',
       'servicio técnico celulares Iguazú',
@@ -68,6 +70,7 @@ export const SEO_CONFIG = {
       'Triple Frontera',
       'zona centro Iguazú',
       'barrio centro Puerto Iguazú',
+      'servicio técnico cerca de mí',
     ],
     lsi: [
       'servicio técnico',
@@ -80,15 +83,15 @@ export const SEO_CONFIG = {
     ],
   },
 
-  // Meta tags por página
+  // Meta tags por página (intención local, ciudad objetivo)
   pages: {
     home: {
       title:
-        'Reparación de Celulares y Computadoras en Puerto Iguazú | Desarrollo Web | TechSolutions',
+        'TS | TechSolutions Iguazú – Servicio Técnico en Puerto Iguazú',
       description:
-        'Servicio técnico profesional de celulares y computadoras en Puerto Iguazú, Misiones. Reparación de iPhone, Android, notebooks. Desarrollo web a medida. Diagnóstico gratuito.',
+        'Servicio técnico informático en Puerto Iguazú, Misiones: reparación de celulares y computadoras, creación de páginas web. Diagnóstico gratuito, garantía. Atendemos en local y a domicilio. Cerca de vos.',
       keywords:
-        'reparación celulares Puerto Iguazú, servicio técnico computadoras Iguazú, desarrollo web Misiones, arreglo iPhone, reparación Android',
+        'reparación celulares Puerto Iguazú, servicio técnico informático Iguazú, reparación computadoras Puerto Iguazú, páginas web Puerto Iguazú, desarrollo web Misiones, técnico cerca de mí',
     },
   },
 

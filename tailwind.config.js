@@ -63,8 +63,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        sans: ['Outfit', 'system-ui', 'sans-serif'],
+        display: ['Outfit', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out forwards',

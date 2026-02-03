@@ -8,10 +8,12 @@ import { SchemaOrg } from '@/seo/SchemaOrg'
 import { Header } from '@/components/Layout/Header'
 import { Footer } from '@/components/Layout/Footer'
 import { Hero } from '@/components/sections/Hero'
+import { Portfolio } from '@/components/sections/Portfolio'
 import { About } from '@/components/sections/About'
 import { Services } from '@/components/sections/Services'
 import { TechStack } from '@/components/sections/TechStack'
 import { Location } from '@/components/sections/Location'
+import { FAQ } from '@/components/sections/FAQ'
 import { Contact } from '@/components/sections/Contact'
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 
@@ -30,10 +32,12 @@ function AppContent() {
 
       <main id="main">
         <Hero />
+        <Portfolio />
         <About />
         <Services />
         <TechStack />
         <Location />
+        <FAQ />
         <Contact />
       </main>
 
